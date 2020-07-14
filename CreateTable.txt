@@ -1,0 +1,36 @@
+CREATE TABLE Student(
+    -> id INT,
+    -> name CHAR(20),
+    -> PRIMARY KEY (id)
+    -> );
+
+CREATE TABLE BookList(
+    -> book_num INT,
+    -> book_name CHAR(30),
+    -> publisher CHAR(20),
+    -> author CHAR(20),
+    -> can_borrow BOOLEAN,
+    -> PRIMARY KEY (book_num)
+    -> );
+
+CREATE TABLE CheckedList(
+    -> id INT auto_increment,
+    -> checker_id INT,
+    -> book_num INT,
+    -> check_data DATETIME  Default current_timestamp,
+    -> return_date DATETIME,
+    -> overdue_fee INT Default 0,
+    -> PRIMARY KEY (id),
+    -> FOREIGN KEY (checker_id) REFERENCES Student (id),
+    -> FOREIGN KEY (book_num) REFERENCES BookList (book_num)
+    -> );
+
+CREATE TABLE ReserveList(
+    -> id INT auto_increment,
+    -> reserver_id INT,
+    -> book_num INT,
+    -> reserve_date DATETIME Default current_timestamp,
+    -> PRIMARY KEY (id),
+    -> FOREIGN KEY (reserver_id) REFERENCES Student (id),
+    -> FOREIGN KEY (book_num) REFERENCES BookList (book_num)
+    -> );
