@@ -1,2 +1,2 @@
-# LibrarayDB
-JDBC Programming for LibrarayDB
+# Libraray
+JDBC Programming for Libraray
